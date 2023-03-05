@@ -11,6 +11,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
+import pl.edu.wszib.springwprowadzenie.configuration.MojeProperties;
 import pl.edu.wszib.springwprowadzenie.model.Samochod;
 import pl.edu.wszib.springwprowadzenie.model.Silnik;
 
@@ -25,6 +26,9 @@ public class SpringWprowadzenieApplication implements CommandLineRunner, Applica
 
     @Autowired
     private Samochod samochod;
+
+    @Autowired
+    private MojeProperties mojeProperties;
 
     @Bean
     public String cos(Samochod samochod){
@@ -43,6 +47,13 @@ public class SpringWprowadzenieApplication implements CommandLineRunner, Applica
         samochod.odpal();
         silnik.zepsuj();
         samochod.odpal();
+
+        System.out.println(mojeProperties.getPassword());
+        System.out.println(mojeProperties.getUrl());
+        System.out.println(mojeProperties.getUsername());
+        System.out.println(mojeProperties.getDodatkowe().getPierwszy());
+        System.out.println(mojeProperties.getDodatkowe().getDrugi());
+
     }
 
     @Override
